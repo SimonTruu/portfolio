@@ -1,0 +1,18 @@
+*{
+margin: 0;
+padding: 0;
+}
+
+#startMenu{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+}
+
+#startMenu > .menuItem{
+    margin: 10px;
+    padding: 10px;
+    justify-content: center;
+    text-align: center;
+}
