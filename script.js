@@ -34,5 +34,5 @@ function toggleLight(){
   }
 }
 
-if (localStorage.getItem("theme") === "light") {document.body.classList.add("light-mode");}
+if (localStorage.getItem("theme") === "light") {document.body.classList.add("light-mode");}t
 });
