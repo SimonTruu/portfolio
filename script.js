@@ -88,10 +88,15 @@ document.addEventListener("DOMContentLoaded", () => {
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
 
-      const gradient = ctx.createRadialGradient( this.x, this.y, 0, this.x, this.y, this.size * 2);
-      gradient.addColorStop(0, `rgba(255, 140, 40, ${brightness})`);
-      gradient.addColorStop(0.3, `rgba(255, 80, 20, ${brightness * 0.8})`);
-      gradient.addColorStop(1, `rgba(255, 0, 0, 0)`);
+      const gradient = ctx.createRadialGradient(
+      this.x, this.y, 0,
+      this.x, this.y, this.size * 2
+      );
+
+        // Use precomputed colors (just replace "BRIGHTNESS")
+      gradient.addColorStop(0, particleThemes[currentParticleTheme].center.replace("BR", brightness));
+      gradient.addColorStop(0.3, particleThemes[currentParticleTheme].mid.replace("BR", brightness * 0.8));
+      gradient.addColorStop(1, particleThemes[currentParticleTheme].edge);
 
       ctx.fillStyle = gradient;
       ctx.fill();
@@ -111,3 +116,84 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   animate();
 });
+
+// partical color
+const particleThemes = [
+  // 1. Fire (your original)
+  {
+    center: "rgba(255, 140, 40, BR)",
+    mid: "rgba(255, 80, 20, BR)",
+    edge: "rgba(255, 0, 0, 0)"
+  },
+  // 2. Ice Blue
+  {
+    center: "rgba(180, 220, 255, BR)",
+    mid: "rgba(120, 180, 255, BR)",
+    edge: "rgba(0, 100, 255, 0)"
+  },
+  // 3. Pink Glow
+  {
+    center: "rgba(255, 180, 220, BR)",
+    mid: "rgba(255, 130, 200, BR)",
+    edge: "rgba(255, 180, 220, 0)"
+  },
+  // 4. Neon Green
+  {
+    center: "rgba(100, 255, 150, BR)",
+    mid: "rgba(50, 200, 100, BR)",
+    edge: "rgba(0, 255, 0, 0)"
+  },
+  // 5. Electric Purple ⚡
+  {
+    center: "rgba(200, 120, 255, BR)",
+    mid: "rgba(160, 70, 255, BR)",
+    edge: "rgba(200, 120, 255, 0)"
+  },
+  // 6. Golden Sun ✨
+  {
+    center: "rgba(255, 220, 120, BR)",
+    mid: "rgba(255, 190, 80, BR)",
+    edge: "rgba(255, 200, 0, 0)"
+  },
+  // 7. Cyan / Aqua 🌊
+  {
+    center: "rgba(120, 255, 240, BR)",
+    mid: "rgba(80, 220, 220, BR)",
+    edge: "rgba(120, 255, 240, 0)"
+  },
+  // 8. Toxic Green / Slime 💚
+  {
+    center: "rgba(180, 255, 0, BR)",
+    mid: "rgba(140, 220, 0, BR)",
+    edge: "rgba(180, 255, 0, 0)"
+  },
+  // 9. Magma / Lava 🌋
+  {
+    center: "rgba(255, 80, 0, BR)",
+    mid: "rgba(200, 30, 0, BR)",
+    edge: "rgba(255, 80, 0, 0)"
+  },
+  // 10. Pastel Sky ☁️
+  {
+    center: "rgba(255, 200, 240, BR)",
+    mid: "rgba(200, 180, 255, BR)",
+    edge: "rgba(255, 255, 255, 0)"
+  }
+];
+
+
+const particleThemeButton = document.getElementById("particleTheme");
+var currentParticleTheme = 0;
+
+if (particleThemeButton) {
+  particleThemeButton.addEventListener("click", () => {
+    currentParticleTheme = (currentParticleTheme + 1);
+    if(currentParticleTheme >= particleThemes.length) {currentParticleTheme = 0}
+    localStorage.setItem("particleTheme", currentParticleTheme);
+  });
+}
+
+// Load saved particle theme
+if (localStorage.getItem("particleTheme")) {
+  currentParticleTheme = parseInt(localStorage.getItem("particleTheme"));
+}

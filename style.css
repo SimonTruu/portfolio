@@ -30,23 +30,75 @@ body.light-mode {
 }
 
 #startMenu > .menuItem {
-    margin: 10px;
-    padding: 10px;
+    margin: 20px;
+    padding: 20px;
     justify-content: center;
     text-align: center;
     cursor: pointer;
+    font-size: 20px;
 }
 
-#startSection, #aboutSection, #eduSection, #workSection, #pasionSection, #optionSection {
+#startSection, #aboutSection, #eduSection, #projectSection, #optionSection {
     display: none;
 }
 
 canvas {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     display: block;
     pointer-events: none;
+}
+
+.back {
+    position: sticky;
+    top: 0;
+    right: 0;
+}
+
+/* Project container */
+.projects-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    justify-content: center; /* or flex-start if you want them aligned left */
+}
+
+/* Individual project card */
+.project-card {
+    width: 400px; /* fixed width */
+    height: 260px; /* optional fixed height */
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.light-mode .project-card {
+    background-color: #ffffff;
+    color: #000;
+}
+
+/* Hover effect */
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+}
+
+/* Image in project card */
+.project-card img {
+    width: 100%;
+    height: 60%;
+    object-fit: cover;
+}
+
+/* Description under image */
+.project-card p {
+    padding: 10px;
+    font-size: 14px;
 }
