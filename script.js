@@ -94,8 +94,8 @@ document.addEventListener("DOMContentLoaded", () => {
       );
 
         // Use precomputed colors (just replace "BRIGHTNESS")
-      gradient.addColorStop(0, particleThemes[currentParticleTheme].center.replace("BR", brightness));
-      gradient.addColorStop(0.3, particleThemes[currentParticleTheme].mid.replace("BR", brightness * 0.8));
+      gradient.addColorStop(0, particleThemes[currentParticleTheme].center.replace("brightness", brightness));
+      gradient.addColorStop(0.3, particleThemes[currentParticleTheme].mid.replace("brightness", brightness * 0.8));
       gradient.addColorStop(1, particleThemes[currentParticleTheme].edge);
 
       ctx.fillStyle = gradient;
@@ -121,62 +121,62 @@ document.addEventListener("DOMContentLoaded", () => {
 const particleThemes = [
   // 1. Fire (your original)
   {
-    center: "rgba(255, 140, 40, BR)",
-    mid: "rgba(255, 80, 20, BR)",
+    center: "rgba(255, 140, 40, brightness)",
+    mid: "rgba(255, 80, 20, brightness)",
     edge: "rgba(255, 0, 0, 0)"
   },
   // 2. Ice Blue
   {
-    center: "rgba(180, 220, 255, BR)",
-    mid: "rgba(120, 180, 255, BR)",
+    center: "rgba(180, 220, 255, brightness)",
+    mid: "rgba(120, 180, 255, brightness)",
     edge: "rgba(0, 100, 255, 0)"
   },
   // 3. Pink Glow
   {
-    center: "rgba(255, 180, 220, BR)",
-    mid: "rgba(255, 130, 200, BR)",
+    center: "rgba(255, 180, 220, brightness)",
+    mid: "rgba(255, 130, 200, brightness)",
     edge: "rgba(255, 180, 220, 0)"
   },
   // 4. Neon Green
   {
-    center: "rgba(100, 255, 150, BR)",
-    mid: "rgba(50, 200, 100, BR)",
+    center: "rgba(100, 255, 150, brightness)",
+    mid: "rgba(50, 200, 100, brightness)",
     edge: "rgba(0, 255, 0, 0)"
   },
   // 5. Electric Purple ⚡
   {
-    center: "rgba(200, 120, 255, BR)",
-    mid: "rgba(160, 70, 255, BR)",
+    center: "rgba(200, 120, 255, brightness)",
+    mid: "rgba(160, 70, 255, brightness)",
     edge: "rgba(200, 120, 255, 0)"
   },
   // 6. Golden Sun ✨
   {
-    center: "rgba(255, 220, 120, BR)",
-    mid: "rgba(255, 190, 80, BR)",
+    center: "rgba(255, 220, 120, brightness)",
+    mid: "rgba(255, 190, 80, brightness)",
     edge: "rgba(255, 200, 0, 0)"
   },
   // 7. Cyan / Aqua 🌊
   {
-    center: "rgba(120, 255, 240, BR)",
-    mid: "rgba(80, 220, 220, BR)",
+    center: "rgba(120, 255, 240, brightness)",
+    mid: "rgba(80, 220, 220, brightness)",
     edge: "rgba(120, 255, 240, 0)"
   },
   // 8. Toxic Green / Slime 💚
   {
-    center: "rgba(180, 255, 0, BR)",
-    mid: "rgba(140, 220, 0, BR)",
+    center: "rgba(180, 255, 0, brightness)",
+    mid: "rgba(140, 220, 0, brightness)",
     edge: "rgba(180, 255, 0, 0)"
   },
   // 9. Magma / Lava 🌋
   {
-    center: "rgba(255, 80, 0, BR)",
-    mid: "rgba(200, 30, 0, BR)",
+    center: "rgba(255, 80, 0, brightness)",
+    mid: "rgba(200, 30, 0, brightness)",
     edge: "rgba(255, 80, 0, 0)"
   },
   // 10. Pastel Sky ☁️
   {
-    center: "rgba(255, 200, 240, BR)",
-    mid: "rgba(200, 180, 255, BR)",
+    center: "rgba(255, 200, 240, brightness)",
+    mid: "rgba(200, 180, 255, brightness)",
     edge: "rgba(255, 255, 255, 0)"
   }
 ];
