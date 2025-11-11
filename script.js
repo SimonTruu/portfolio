@@ -1,8 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // ===== Menu logic =====
+  // Menu logic
   const startMenu = document.getElementById("startMenu");
   const content = document.querySelectorAll(".content");
 
+  // adds on click function to show the section you clicked and hides the rest
   document.querySelectorAll("#startMenu .menuItem").forEach(item => {
     item.addEventListener("click", () => {
       const sectionID = `${item.id}Section`;
@@ -14,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  // back button logic
   document.querySelectorAll(".back").forEach(item => {
     item.addEventListener("click", () => {
       content.forEach(sec => (sec.style.display = "none"));
@@ -21,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // ===== Theme toggle =====
+  // Theme toggle 
   const styleToggle = document.getElementById("styleToggel");
   if (styleToggle) {
     styleToggle.addEventListener("click", toggleLight);
@@ -40,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.add("light-mode");
   }
 
-  // ===== Canvas setup =====
+  // Canvas setup 
   const canvas = document.getElementById("particles");
   const ctx = canvas.getContext("2d");
 
@@ -51,12 +53,13 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("resize", resize);
   resize();
 
-  // ===== Particle class =====
+  // the particals of the canvas
   class Particle {
     constructor() {
       this.reset();
     }
 
+    // randomizes the attributs of the particals
     reset() {
       this.x = Math.random() * canvas.width;
       this.y = canvas.height + Math.random() * 100;
@@ -69,6 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
       this.driftChange = 0.002 + Math.random() * 0.004;
     }
 
+    //updates the posistion and restarts the pertical if it has öeft the screen
     update() {
       const heightMod = this.y / canvas.height;
       this.y -= this.speedY;
@@ -81,12 +85,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     draw() {
+      // makes the color change depending on where and when in it life span it is
       const progress = this.life / this.maxLife;
       const fade = progress < 0.2 ? progress / 0.2 : 1 - (progress - 0.2) / 0.8;
       const brightness = this.baseBrightness * fade;
 
+      // draws the particals
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+
 
       const gradient = ctx.createRadialGradient(
       this.x, this.y, 0,
@@ -98,6 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
       gradient.addColorStop(0.3, particleThemes[currentParticleTheme].mid.replace("brightness", brightness * 0.8));
       gradient.addColorStop(1, particleThemes[currentParticleTheme].edge);
 
+      // adds the color
       ctx.fillStyle = gradient;
       ctx.fill();
     }
@@ -117,9 +125,10 @@ document.addEventListener("DOMContentLoaded", () => {
   animate();
 });
 
-// partical color
+// partical color 
+// asked chatgpt for a list of colors
 const particleThemes = [
-  // 1. Fire (your original)
+  // 1. Fire
   {
     center: "rgba(255, 140, 40, brightness)",
     mid: "rgba(255, 80, 20, brightness)",
@@ -185,6 +194,7 @@ const particleThemes = [
 const particleThemeButton = document.getElementById("particleTheme");
 var currentParticleTheme = 0;
 
+// updates the partical color
 if (particleThemeButton) {
   particleThemeButton.addEventListener("click", () => {
     currentParticleTheme = (currentParticleTheme + 1);
