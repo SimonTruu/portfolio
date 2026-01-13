@@ -38,7 +38,7 @@ body.light-mode {
     font-size: 20px;
 }
 
-#startSection, #aboutSection, #eduSection, #projectSection, #optionSection {
+#startSection, #aboutSection, #eduSection, #projectSection, #optionSection, #logbookSection{
     display: none;
 }
 
